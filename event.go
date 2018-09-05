@@ -1,4 +1,4 @@
-package main
+package otrscouting
 
 import (
 	"github.com/gin-gonic/gin"
@@ -6,21 +6,21 @@ import (
 )
 
 type EventTemplate struct {
-	EventName string
-	FRCEvents string
-	EventCode string
+	EventName   string
+	FRCEvents   string
+	EventCode   string
 	QualMatches []MatchTemplate
 	ElimMatches []MatchTemplate
 }
 
 type MatchTemplate struct {
-	Red1 RobotTemplate
-	Red2 RobotTemplate
-	Red3 RobotTemplate
-	Blue1 RobotTemplate
-	Blue2 RobotTemplate
-	Blue3 RobotTemplate
-	RedScore int
+	Red1      RobotTemplate
+	Red2      RobotTemplate
+	Red3      RobotTemplate
+	Blue1     RobotTemplate
+	Blue2     RobotTemplate
+	Blue3     RobotTemplate
+	RedScore  int
 	BlueScore int
 }
 

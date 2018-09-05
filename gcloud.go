@@ -1,4 +1,4 @@
-package main
+package otrscouting
 
 import (
 	"cloud.google.com/go/storage"
@@ -10,6 +10,7 @@ import (
 	"html/template"
 	"io/ioutil"
 )
+
 func UploadFile(fileName string, data []byte, c *gin.Context) {
 	ctx := appengine.NewContext(c.Request)
 	bucket, err := file.DefaultBucketName(ctx)
@@ -32,26 +33,26 @@ func UploadFile(fileName string, data []byte, c *gin.Context) {
 }
 
 func dumpStats(obj *storage.ObjectAttrs) {
-	fmt.Printf( "(filename: /%v/%v, ", obj.Bucket, obj.Name)
-	fmt.Printf( "ContentType: %q, ", obj.ContentType)
-	fmt.Printf( "ACL: %#v, ", obj.ACL)
+	fmt.Printf("(filename: /%v/%v, ", obj.Bucket, obj.Name)
+	fmt.Printf("ContentType: %q, ", obj.ContentType)
+	fmt.Printf("ACL: %#v, ", obj.ACL)
 	fmt.Printf("Owner: %v, ", obj.Owner)
-	fmt.Printf( "ContentEncoding: %q, ", obj.ContentEncoding)
+	fmt.Printf("ContentEncoding: %q, ", obj.ContentEncoding)
 	fmt.Printf("Size: %v, ", obj.Size)
-	fmt.Printf( "MD5: %q, ", obj.MD5)
-	fmt.Printf( "CRC32C: %q, ", obj.CRC32C)
+	fmt.Printf("MD5: %q, ", obj.MD5)
+	fmt.Printf("CRC32C: %q, ", obj.CRC32C)
 	fmt.Printf("Metadata: %#v, ", obj.Metadata)
 	fmt.Printf("MediaLink: %q, ", obj.MediaLink)
-	fmt.Printf( "StorageClass: %q, ", obj.StorageClass)
+	fmt.Printf("StorageClass: %q, ", obj.StorageClass)
 	if !obj.Deleted.IsZero() {
-		fmt.Printf( "Deleted: %v, ", obj.Deleted)
+		fmt.Printf("Deleted: %v, ", obj.Deleted)
 	}
-	fmt.Printf( "Updated: %v)\n", obj.Updated)
+	fmt.Printf("Updated: %v)\n", obj.Updated)
 }
 
 func GetPageTemplate(page string, c *gin.Context) *template.Template {
 	ctx := appengine.NewContext(c.Request)
-	url := "https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/"+page
+	url := "https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/" + page
 	client := urlfetch.Client(ctx)
 	resp, err := client.Get(url)
 	if err != nil {
@@ -63,7 +64,6 @@ func GetPageTemplate(page string, c *gin.Context) *template.Template {
 	html, err := ioutil.ReadAll(resp.Body)
 	// show the HTML code as a string %s
 	fmt.Printf("%s\n", html)
-
 
 	tmpl, err := template.New(page).Parse(string(html))
 	return tmpl

@@ -1,4 +1,4 @@
-package main
+package otrscouting
 
 import (
 	"github.com/gin-gonic/gin"

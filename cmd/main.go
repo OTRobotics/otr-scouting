@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"github.com/gin-gonic/gin"
@@ -12,8 +12,9 @@ type PageData struct {
 
 type IndexPage struct {
 	PageTitle string
-	Events []EventTemplate
+	Events    []EventTemplate
 }
+
 func main() {
 	router := gin.Default()
 	router.GET("/", GinHomeHandler)
@@ -29,6 +30,6 @@ func main() {
 
 func GinHomeHandler(c *gin.Context) {
 	tmpl := GetPageTemplate("index.html", c)
-	data := PageData{PageTitle:"OTR Scouting Application"}
+	data := PageData{PageTitle: "OTR Scouting Application"}
 	tmpl.Execute(c.Writer, data)
 }

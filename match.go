@@ -1,4 +1,4 @@
-package main
+package otrscouting
 
 import (
 	"cloud.google.com/go/firestore"
