@@ -8,13 +8,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{.PageTitle}}</title>
+    <title>{{.EventName}}</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/logo-nav.css" rel="stylesheet">
+    <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/css/logo-nav.css" rel="stylesheet">
 
 </head>
 
@@ -24,7 +24,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="http://placehold.it/300x60?text=Logo" width="150" height="30" alt="">
+            <img src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/css/OTWhite@4x.png"
+                 height="40" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -33,17 +34,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Events</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Teams</a>
+                    <a class="nav-link" href=/events>Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Matches</a>
+                    <a class="nav-link" href="/teams">Teams</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/matches">Matches</a>
                 </li>
             </ul>
         </div>
@@ -52,19 +53,35 @@
 
 <!-- Page Content -->
 <div class="container">
-    <h3>Matches</h3>
+    <h3>Qualification Matches</h3>
     <ul class="list-group">
-        <li class="list-group-item list-group-item-action">{EVENT} - {MATCH NUMBER}
-            <span class="badge badge-danger badge-pill">{RED SCORE}</span>
-            <span class="badge badge-primary badge-pill">{BLUE SCORE}</span>
+    {{range .QualMatches}}
+        <li class="list-group-item list-group-item-action"><a href="/match/{{.MatchId}}">Qualification
+            - {{.MatchNumber}}
+            <span class="badge badge-danger badge-pill">{{.RedScore}}</span>
+            <span class="badge badge-primary badge-pill">{{.BlueScore}}</span>
+        </a>
         </li>
+    {{end}}
+    </ul>
+    <h3>Elimination Matches</h3>
+    <ul class="list-group">
+    {{range .ElimMatches}}
+        <li class="list-group-item list-group-item-action"><a href="/match/{{.MatchId}}">Elimination
+            - {{.MatchNumber}}
+            <span class="badge badge-danger badge-pill">{{.RedScore}}</span>
+            <span class="badge badge-primary badge-pill">{{.BlueScore}}</span>
+        </a>
+        </li>
+    {{end}}
     </ul>
 </div>
 <!-- /.container -->
 
+
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/jquery/jquery.min.js"></script>
+<script src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

@@ -11,10 +11,11 @@
     <title>{{.PageTitle}}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/logo-nav.css" rel="stylesheet">
+    <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/css/logo-nav.css" rel="stylesheet">
 
 </head>
 
@@ -24,7 +25,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="http://placehold.it/300x60?text=Logo" width="150" height="30" alt="">
+            <img src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/css/OTWhite@4x.png"
+                 height="40" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -33,22 +35,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Teams</a>
-                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Matches</a>
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=/events>Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/teams">Teams</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/matches">Matches</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
 
 <!-- Page Content -->
 <div class="container-fluid">
@@ -61,21 +64,26 @@
                 <div class="col-md"><h1>3</h1></div>
             </div>
             <div class="row">
-                <div class="col-md"><h1>1</h1></div>
+                <div class="col-md"><h1>1</h1>
+                </div>
                 <div class="col-md"><h1>2</h1></div>
                 <div class="col-md"><h1>3</h1></div>
             </div>
         </div>
-        <div class="col-lg">
+        <div class="col-lg" style="height:100%; display: block;">
             <h1>Right</h1>
+            <iframe src="https://frc-events.firstinspires.org/2018/ONWAT/qualifications/1" scrolling="no" frameborder="0"
+                    style="position: relative; height: 1840px; width: 100%;"></iframe>
+
         </div>
     </div>
 </div>
 <!-- /.container -->
 
+
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/jquery/jquery.min.js"></script>
+<script src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

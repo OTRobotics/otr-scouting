@@ -59,7 +59,8 @@
     <h3>Events</h3>
     <ul class="list-group">
     {{range .Events}}
-        <li class="list-group-item disabled list-group-item-action">{{.EventName}} - {{.EventDate}}</li>
+        <li class="list-group-item disabled list-group-item-action">
+            <a href="/event/{{.EventCode}}">{{.EventName}} - {{.EventDate}}</a></li>
     {{end}}
     </ul>
     <br>
