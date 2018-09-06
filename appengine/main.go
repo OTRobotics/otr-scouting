@@ -1,10 +1,10 @@
-package cmd
+package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/otrobotics/otr-scouting"
 	"google.golang.org/appengine"
 	"net/http"
-	"otr-scouting"
 )
 
 type PageData struct {
@@ -31,6 +31,11 @@ func main() {
 
 func GinHomeHandler(c *gin.Context) {
 	tmpl := otrscouting.GetPageTemplate("index.html", c)
-	data := PageData{PageTitle: "OTR Scouting Application"}
+	data := IndexPage{PageTitle: "OTR Scouting Application",
+		Events: []otrscouting.EventTemplate{
+			{EventName: "Waterloo District", EventCode: "2018_onwat", FRCEvents: "ONWAT", EventDate: "Week 4"},
+			{EventName: "McMaster District", EventCode: "2018_onham", FRCEvents: "ONHAM", EventDate: "Week 6"},
+		},
+	}
 	tmpl.Execute(c.Writer, data)
 }

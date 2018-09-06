@@ -9,6 +9,7 @@ type EventTemplate struct {
 	EventName   string
 	FRCEvents   string
 	EventCode   string
+	EventDate   string
 	QualMatches []MatchTemplate
 	ElimMatches []MatchTemplate
 }
