@@ -11,7 +11,8 @@
     <title>{{.PageTitle}}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/css/logo-nav.css" rel="stylesheet">
@@ -24,7 +25,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="http://placehold.it/300x60?text=Logo" width="150" height="30" alt="">
+            <img src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/css/OTWhite@4x.png"
+                 height="40" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -37,23 +39,40 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
+                    <a class="nav-link" href=/events>Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Teams</a>
+                    <a class="nav-link" href="/teams">Teams</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Matches</a>
+                    <a class="nav-link" href="/matches">Matches</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
 <!-- Page Content -->
 <div class="container">
     <h1 class="mt-5">{{.PageTitle}}</h1>
+{{if .Uploaded}}
+    <h4>Thank you! Upload successful</h4>
+{{end}}
+{{if .Unauthorized}}
+    <h4>You are not authorized to upload event data</h4>
+{{end}}
+    <h4></h4>
     <h4>TBD</h4>
+    <form action="/upload" method="post">
+        <div class="form-group">
+            <label for="pass">Upload Password</label>
+            <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter upload password">
+        </div>
+        <div class="form-group">
+            <label for="json">JSON Data</label>
+            <textarea class="form-control" id="json" name="json" placeholder="JSON Data"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 <!-- /.container -->
 

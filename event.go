@@ -27,6 +27,7 @@ type MatchTemplate struct {
 }
 
 type RobotTemplate struct {
+	Team int `json:"team"`
 }
 
 // Format: /event/:event

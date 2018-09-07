@@ -1,5 +1,5 @@
 runtime: go
-api_version: go1.9
+env: flex
 
 handlers:
 # All URLs are handled by the Go application script
