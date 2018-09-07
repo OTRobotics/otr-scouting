@@ -21,21 +21,23 @@ func main() {
 	router.GET("/", GinHomeHandler)
 	router.GET("/upload", otrscouting.GinUploadHandler)
 	router.POST("/upload", otrscouting.GinUploadHandler)
+
+	router.GET("/matches")
+	router.GET("/teams")
+	router.GET("/events")
+
 	router.GET("/match/:matchnumber", otrscouting.GinMatchHandler)
 	router.GET("/team/:teamnumber", otrscouting.GinTeamHandler)
 	router.GET("/event/:event", otrscouting.GinEventHandler)
 
 	http.Handle("/", router)
-	appengine.Main() // Starts the server to receive requests
+	appengine.Main()
 }
 
 func GinHomeHandler(c *gin.Context) {
 	tmpl := otrscouting.GetPageTemplate("index.html", c)
 	data := IndexPage{PageTitle: "OTR Scouting Application",
-		Events: []otrscouting.EventTemplate{
-			{EventName: "Waterloo District", EventCode: "2018_onwat", FRCEvents: "ONWAT", EventDate: "Week 4"},
-			{EventName: "McMaster District", EventCode: "2018_onham", FRCEvents: "ONHAM", EventDate: "Week 6"},
-		},
+		Events: otrscouting.GetYearEvents(2018, c),
 	}
 	tmpl.Execute(c.Writer, data)
 }

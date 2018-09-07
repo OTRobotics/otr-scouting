@@ -1,7 +1,17 @@
 runtime: go
 env: flex
 
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
 handlers:
 # All URLs are handled by the Go application script
 - url: /.*
   script: _go_app
+
+env_variables:
+  GCLOUD_DATASET_ID: otr-scouting

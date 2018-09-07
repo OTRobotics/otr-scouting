@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{.PageTitle}}</title>
+    <title>{{.MatchId}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/vendor/bootstrap/css/bootstrap.min.css"
@@ -56,25 +56,56 @@
 <!-- Page Content -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg">
-            <h1>Left</h1>
-            <div class="row">
-                <div class="col-md"><h1>1</h1></div>
-                <div class="col-md"><h1>2</h1></div>
-                <div class="col-md"><h1>3</h1></div>
+        <h1>{{.FriendlyName}}</h1>
+    </div>
+
+    <div class="col-lg">
+        <h1>Left</h1>
+        <div class="row">
+            <div class="col-sm">
+            {{with .Red1}}
+                <h1>Red 1</h1>
+                <h4>{{.Team}}</h4>
+            {{end}}
             </div>
-            <div class="row">
-                <div class="col-md"><h1>1</h1>
-                </div>
-                <div class="col-md"><h1>2</h1></div>
-                <div class="col-md"><h1>3</h1></div>
+            <div class="col-sm">
+            {{with .Red2}}
+                <h1>Red 2</h1>
+                <h4>{{.Team}}</h4>
+            {{end}}
+            </div>
+            <div class="col-sm">
+            {{with .Red3}}
+                <h1>Red 3</h1>
+                <h4>{{.Team}}</h4>
+            {{end}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+            {{with .Blue1}}
+                <h1>Blue 1</h1>
+                <h4>{{.Team}}</h4>
+            {{end}}
+            </div>
+            <div class="col-sm">
+            {{with .Blue2}}
+                <h1>Blue 2</h1>
+                <h4>{{.Team}}</h4>
+            {{end}}
+            </div>
+            <div class="col-sm">
+            {{with .Blue3}}
+                <h1>Blue 3</h1>
+                <h4>{{.Team}}</h4>
+            {{end}}
             </div>
         </div>
         <div class="col-lg" style="height:100%; display: block;">
             <h1>Right</h1>
-            <iframe src="https://frc-events.firstinspires.org/2018/ONWAT/qualifications/1" scrolling="no" frameborder="0"
+            <iframe src="https://frc-events.firstinspires.org/2018/ONWAT/qualifications/1" scrolling="no"
+                    frameborder="0"
                     style="position: relative; height: 1840px; width: 100%;"></iframe>
-
         </div>
     </div>
 </div>

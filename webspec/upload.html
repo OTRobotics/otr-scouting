@@ -54,11 +54,13 @@
 <!-- Page Content -->
 <div class="container">
     <h1 class="mt-5">{{.PageTitle}}</h1>
+
 {{if .Uploaded}}
-    <h4>Thank you! Upload successful</h4>
-{{end}}
 {{if .Unauthorized}}
     <h4>You are not authorized to upload event data</h4>
+{{else}}
+    <h4>Thank you! Upload successful</h4>
+{{end}}
 {{end}}
     <h4></h4>
     <h4>TBD</h4>

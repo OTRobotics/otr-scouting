@@ -53,7 +53,14 @@
 
 <!-- Page Content -->
 <div class="container">
+
+    <div class="row">
+        <h1>{{.EventName}}</h1>
+    </div>
+    <div class="row">
     <h3>Qualification Matches</h3>
+    </div>
+    <div class="row">
     <ul class="list-group">
     {{range .QualMatches}}
         <li class="list-group-item list-group-item-action"><a href="/match/{{.MatchId}}">Qualification
@@ -64,7 +71,11 @@
         </li>
     {{end}}
     </ul>
+    </div>
+    <div class="row">
     <h3>Elimination Matches</h3>
+    </div>
+    <div class="row">
     <ul class="list-group">
     {{range .ElimMatches}}
         <li class="list-group-item list-group-item-action"><a href="/match/{{.MatchId}}">Elimination
@@ -75,6 +86,7 @@
         </li>
     {{end}}
     </ul>
+    </div>
 </div>
 <!-- /.container -->
 

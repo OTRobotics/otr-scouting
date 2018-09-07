@@ -2,6 +2,8 @@ package otrscouting
 
 import (
 	"github.com/gin-gonic/gin"
+	"strconv"
+	"strings"
 )
 
 type EventTemplate struct {
@@ -9,6 +11,7 @@ type EventTemplate struct {
 	FRCEvents   string
 	EventCode   string
 	EventDate   string
+	Year        int
 	QualMatches []MatchTemplate
 	ElimMatches []MatchTemplate
 }
@@ -26,36 +29,35 @@ type MatchTemplate struct {
 	MatchId     string
 }
 
+func (m MatchTemplate) Level() string {
+	if strings.Split(m.MatchId, "_")[2][0] == 'q' {
+		return "Qualification"
+	}
+	return "Elimination"
+}
+
+func (m MatchTemplate) FriendlyName() string {
+	return m.Level() + " " + m.MatchNumber
+}
+
+func (m MatchTemplate) EventId() string {
+	return strings.Split(m.MatchId, "_")[1]
+}
+
+func (m MatchTemplate) Year() int {
+	year, _ := strconv.Atoi(strings.Split(m.MatchId, "_")[0])
+	return year
+}
+
 type RobotTemplate struct {
 	Team int `json:"team"`
 }
 
 // Format: /event/:event
 func GinEventHandler(c *gin.Context) {
-	//	event := c.Param("event")
-
+	eventCode := c.Param("event")
 	tmpl := GetPageTemplate("event.html", c)
-	data := EventTemplate{
-		EventName: "Waterloo District",
-		FRCEvents: "ONWAT",
-		EventCode: "2018_onwat",
-		EventDate: "Week 4",
-		QualMatches: []MatchTemplate{
-			{
-				MatchNumber: "1",
-				RedScore:    120,
-				BlueScore:   200,
-				MatchId:     "2018_onwat_q1",
-			},
-		},
-		ElimMatches: []MatchTemplate{
-			{
-				MatchNumber: "QF1-1",
-				RedScore:    100,
-				BlueScore:   90,
-				MatchId:     "2018_onwat_qf1-1",
-			},
-		},
-	}
+	data := getEvent(c, eventCode)
+	data.QualMatches = getEventMatches(c, eventCode)
 	tmpl.Execute(c.Writer, data)
 }

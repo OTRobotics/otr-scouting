@@ -1,12 +1,9 @@
 package otrscouting
 
 import (
-	"cloud.google.com/go/datastore"
-	"context"
 	json2 "encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"log"
 	"strconv"
 )
 
@@ -29,6 +26,22 @@ type MatchUpload struct {
 		Blue2 RobotTemplate `json:"blue_2"`
 		Blue3 RobotTemplate `json:"blue_3"`
 	} `json:"match_data"`
+}
+
+func (m *MatchUpload) toMatchTemplate() MatchTemplate {
+	var mt = MatchTemplate{}
+
+	mt.MatchId = strconv.Itoa(m.Year) + "_" + m.EventId + "_" + m.MatchId
+	mt.MatchNumber = m.MatchId
+	mt.Blue1 = m.MatchData.Blue1
+	mt.Blue2 = m.MatchData.Blue2
+	mt.Blue3 = m.MatchData.Blue3
+
+	mt.Red1 = m.MatchData.Red1
+	mt.Red2 = m.MatchData.Red2
+	mt.Red3 = m.MatchData.Red3
+
+	return mt
 }
 
 func GinUploadHandler(c *gin.Context) {
@@ -59,33 +72,5 @@ func GinUploadHandler(c *gin.Context) {
 		}
 
 		uploadMatchToDatastore(c, matches)
-
-	}
-}
-
-func uploadMatchToDatastore(c *gin.Context, matches []MatchUpload) {
-	// Set your Google Cloud Platform project ID.
-	projectID := "otr-scouting"
-	ctx := context.Background()
-	// Creates a client.
-	client, err := datastore.NewClient(ctx, projectID)
-	if err != nil {
-		log.Fatalf("Failed to create client: %v", err)
-	}
-
-	// Set type
-	kind := "match"
-	for _, match := range matches {
-		// Fully qualified match id - {year}_{event}_{matchid}
-		name := strconv.Itoa(match.Year) + "_" + match.EventId + "_" + match.MatchId
-		// Creates a Key instance.
-		taskKey := datastore.NameKey(kind, name, nil)
-
-		// Saves the new entity.
-		if _, err := client.Put(c, taskKey, &match); err != nil {
-			fmt.Fprintf(c.Writer, "Failed to save match: %v", err)
-		}
-
-		fmt.Fprintf(c.Writer, "Saved %v: %v\n", taskKey, name)
 	}
 }

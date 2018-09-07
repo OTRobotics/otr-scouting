@@ -1,12 +1,9 @@
 package otrscouting
 
 import (
-	"cloud.google.com/go/firestore"
-	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"strconv"
 	"strings"
 )
 
@@ -21,23 +18,12 @@ func GinMatchHandler(c *gin.Context) {
 	}
 	year := split[0]
 	event := split[1]
-	match := split[2]
-	c.JSON(http.StatusOK, gin.H{"match": match, "event": event, "year": year})
-}
 
-func getMatchData(year int, event string, match string) {
-	ctx := context.Background()
-	client, err := firestore.NewClient(ctx, "otr-scouting")
-	if err != nil {
-		// TODO: Handle error.
-	}
+	eventT := getEvent(c, year+"_"+event)
 
-	eventRef := client.Collection(strconv.Itoa(year) + "_" + event)
-	matchRef := eventRef.Doc(match)
-	docsnap, err := matchRef.Get(ctx)
-	if err != nil {
-		// TODO: Handle error.
-	}
-	dataMap := docsnap.Data()
-	fmt.Println(dataMap)
+	mTemp := getMatch(c, name)
+
+	tmpl := GetPageTemplate("match.html", c)
+	tmpl.Execute(c.Writer, mTemp)
+	fmt.Println(eventT.QualMatches)
 }

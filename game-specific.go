@@ -1,13 +1,5 @@
 package otrscouting
 
-import (
-	"fmt"
-	"github.com/gin-gonic/gin"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/datastore"
-	"net/http"
-)
-
 type PowerUpRobot struct {
 	TeamNumber   int
 	Autonomous   PowerUpAuton
@@ -54,23 +46,4 @@ type RobotPerformance struct {
 	NeverMoved    bool
 	NoShow        bool
 	Defense       int
-}
-
-func writeScoutedRobot(robot *PowerUpRobot, c *gin.Context) {
-
-	ctx := appengine.NewContext(c.Request)
-
-	key, err := datastore.Put(ctx, datastore.NewIncompleteKey(ctx, "robot", nil), &robot)
-	if err != nil {
-		http.Error(c.Writer, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	var e2 Employee
-	if err = datastore.Get(ctx, key, &e2); err != nil {
-		http.Error(c.Writer, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	fmt.Fprintf(c.Writer, "Stored and retrieved the Employee named %q", e2.Name)
 }

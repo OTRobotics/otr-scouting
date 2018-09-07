@@ -1,70 +1,240 @@
 package otrscouting
 
 import (
+	"cloud.google.com/go/datastore"
 	"cloud.google.com/go/storage"
+	"context"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/oauth2/google"
+	"google.golang.org/api/option"
 	"google.golang.org/appengine"
-	"google.golang.org/appengine/file"
-	"google.golang.org/appengine/urlfetch"
+	"google.golang.org/appengine/log"
 	"html/template"
 	"io/ioutil"
+	"strconv"
+	"strings"
 )
 
-func UploadFile(fileName string, data []byte, c *gin.Context) {
+func readFile(fileName string, c *gin.Context) []byte {
 	ctx := appengine.NewContext(c.Request)
-	bucket, err := file.DefaultBucketName(ctx)
-
+	bucketName := "staging.otr-scouting.appspot.com"
+	//[END get_default_bucket]
+	creds, err := google.FindDefaultCredentials(ctx, storage.ScopeReadOnly)
 	if err != nil {
-		bucket = "staging.otr-scouting.appspot.com"
+		log.Errorf(ctx, "%p", err)
 	}
-	client, err := storage.NewClient(ctx)
+	client, err := storage.NewClient(ctx, option.WithCredentials(creds))
+	bucket := client.Bucket(bucketName)
+	rc, err := bucket.Object(fileName).NewReader(ctx)
 	if err != nil {
-		fmt.Printf("failed to create client: %v", err)
-		return
+		//errorf("readFile: unable to open file from bucket %q, file %q: %v", d.bucketName, fileName, err)
+		return []byte("")
 	}
-	defer client.Close()
-
-	wc := client.Bucket(bucket).Object(fileName).NewWriter(ctx)
-
-	wc.ContentType = "text/plain"
-	wc.Write(data)
-	wc.Close()
-}
-
-func dumpStats(obj *storage.ObjectAttrs) {
-	fmt.Printf("(filename: /%v/%v, ", obj.Bucket, obj.Name)
-	fmt.Printf("ContentType: %q, ", obj.ContentType)
-	fmt.Printf("ACL: %#v, ", obj.ACL)
-	fmt.Printf("Owner: %v, ", obj.Owner)
-	fmt.Printf("ContentEncoding: %q, ", obj.ContentEncoding)
-	fmt.Printf("Size: %v, ", obj.Size)
-	fmt.Printf("MD5: %q, ", obj.MD5)
-	fmt.Printf("CRC32C: %q, ", obj.CRC32C)
-	fmt.Printf("Metadata: %#v, ", obj.Metadata)
-	fmt.Printf("MediaLink: %q, ", obj.MediaLink)
-	fmt.Printf("StorageClass: %q, ", obj.StorageClass)
-	if !obj.Deleted.IsZero() {
-		fmt.Printf("Deleted: %v, ", obj.Deleted)
+	defer rc.Close()
+	slurp, err := ioutil.ReadAll(rc)
+	if err != nil {
+		//d.errorf("readFile: unable to read data from bucket %q, file %q: %v", d.bucketName, fileName, err)
+		return []byte("")
 	}
-	fmt.Printf("Updated: %v)\n", obj.Updated)
+
+	return slurp
 }
 
 func GetPageTemplate(page string, c *gin.Context) *template.Template {
-	ctx := appengine.NewContext(c.Request)
-	url := "https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/" + page
-	client := urlfetch.Client(ctx)
-	resp, err := client.Get(url)
-	if err != nil {
-		panic(err)
-	}
-	// do this now so it won't be forgotten
-	defer resp.Body.Close()
-	// reads html as a slice of bytes
-	html, err := ioutil.ReadAll(resp.Body)
-	// show the HTML code as a string %s
-	fmt.Printf("%s\n", html)
 
-	tmpl, err := template.New(page).Parse(string(html))
+	page = "web/" + page
+	// reads html as a slice of bytes
+	html := readFile(page, c)
+
+	tmpl, _ := template.New(page).Parse(string(html))
 	return tmpl
+}
+
+func datastoreClient(c *gin.Context) *datastore.Client {
+	projectID := "otr-scouting"
+	ctx := context.Background()
+	// Creates a client.
+	client, err := datastore.NewClient(ctx, projectID)
+	if err != nil {
+		log.Errorf(ctx, "Failed to create client: %v", err)
+	}
+	return client
+}
+
+func uploadMatchToDatastore(c *gin.Context, matches []MatchUpload) {
+	// Set your Google Cloud Platform project ID.
+
+	client := datastoreClient(c)
+	// Set type
+	kind := "match"
+	for _, match := range matches {
+		// Fully qualified match id - {year}_{event}_{matchid}
+		name := strconv.Itoa(match.Year) + "_" + match.EventId + "_" + match.MatchId
+		// Creates a Key instance.
+		taskKey := datastore.NameKey(kind, name, nil)
+
+		// Saves the new entity.
+		if _, err := client.Put(c, taskKey, &match); err != nil {
+			fmt.Fprintf(c.Writer, "Failed to save match: %v", err)
+		}
+
+		fmt.Fprintf(c.Writer, "Saved %v: %v\n", taskKey, name)
+	}
+}
+
+func getEvent(c *gin.Context, event string) EventTemplate {
+	ctx := context.Background()
+	var eTemp EventTemplate
+
+	q := datastore.NewQuery("event").
+		Filter("EventCode =", event)
+	client := datastoreClient(c)
+	keys, err := client.GetAll(ctx, q, &eTemp)
+
+	if err != nil {
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list books: %v", err)
+	}
+
+	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
+
+	eTemp.QualMatches = getEventQualMatches(c, event)
+	eTemp.ElimMatches = getEventElimMatches(c, event)
+
+	return eTemp
+}
+
+func GetYearEvents(year int, c *gin.Context) []EventTemplate {
+	ctx := context.Background()
+	eTemp := make([]EventTemplate, 0)
+
+	q := datastore.NewQuery("event").
+		Filter("Year =", year)
+	client := datastoreClient(c)
+	keys, err := client.GetAll(ctx, q, &eTemp)
+
+	if err != nil {
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list: %v", err)
+	}
+
+	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
+
+	return eTemp
+}
+
+func getEventQualMatches(c *gin.Context, event string) []MatchTemplate {
+	split := strings.Split(event, "_")
+
+	eventId := split[1]
+	year, _ := strconv.Atoi(split[0])
+
+	ctx := context.Background()
+	matches := make([]*MatchUpload, 0)
+	q := datastore.NewQuery("match").
+		Filter("Year =", year).
+		Filter("EventId =", eventId).
+		Filter("Level =", "qualifications")
+
+	client := datastoreClient(c)
+	keys, err := client.GetAll(ctx, q, &matches)
+
+	if err != nil {
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list: %v", err)
+	}
+
+	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
+	var cleanedMatches []MatchTemplate
+
+	for _, v := range matches {
+		cleanedMatches = append(cleanedMatches, v.toMatchTemplate())
+	}
+	return cleanedMatches
+}
+
+func getEventElimMatches(c *gin.Context, event string) []MatchTemplate {
+	split := strings.Split(event, "_")
+
+	eventId := split[1]
+	year, _ := strconv.Atoi(split[0])
+
+	ctx := context.Background()
+	matches := make([]*MatchUpload, 0)
+	q := datastore.NewQuery("match").
+		Filter("Year =", year).
+		Filter("EventId =", eventId).
+		Filter("Level =", "eliminations")
+
+	client := datastoreClient(c)
+	keys, err := client.GetAll(ctx, q, &matches)
+
+	if err != nil {
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list: %v", err)
+	}
+
+	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
+	var cleanedMatches []MatchTemplate
+
+	for _, v := range matches {
+		cleanedMatches = append(cleanedMatches, v.toMatchTemplate())
+	}
+	return cleanedMatches
+}
+
+func getEventMatches(c *gin.Context, event string) []MatchTemplate {
+	split := strings.Split(event, "_")
+
+	eventId := split[1]
+	year, _ := strconv.Atoi(split[0])
+
+	ctx := context.Background()
+	matches := make([]*MatchUpload, 0)
+	q := datastore.NewQuery("match").
+		Filter("Year =", year).
+		Filter("EventId =", eventId)
+	client := datastoreClient(c)
+	keys, err := client.GetAll(ctx, q, &matches)
+
+	if err != nil {
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list: %v", err)
+	}
+
+	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
+	var cleanedMatches []MatchTemplate
+
+	for _, v := range matches {
+		cleanedMatches = append(cleanedMatches, v.toMatchTemplate())
+	}
+	return cleanedMatches
+}
+
+func getMatch(c *gin.Context, matchCode string) MatchTemplate {
+	split := strings.Split(matchCode, "_")
+
+	eventId := split[1]
+	year, _ := strconv.Atoi(split[0])
+	matchId := split[2][1:]
+	level := split[2][0]
+	compLevel := ""
+	if level != 'e' {
+		compLevel = "qualifications"
+	} else {
+		compLevel = "eliminations"
+	}
+
+	ctx := context.Background()
+	matches := make([]MatchUpload, 0)
+	q := datastore.NewQuery("match").
+		Filter("Year =", year).
+		Filter("EventId =", eventId).
+		Filter("Level =", compLevel).
+		Filter("MatchId = ", matchId)
+	client := datastoreClient(c)
+	keys, err := client.GetAll(ctx, q, &matches)
+
+	if err != nil {
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list: %v", err)
+	}
+
+	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
+	return matches[0].toMatchTemplate()
 }
