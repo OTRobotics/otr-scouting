@@ -55,54 +55,627 @@
 
 <!-- Page Content -->
 <div class="container-fluid">
+    <br>
     <div class="row">
-        <h1>{{.FriendlyName}}</h1>
+        <h2 class="mx-auto">{{.FriendlyName}}</h2>
     </div>
+    <div class="row">
+        <div class="col-lg-9">
+            <h2>Scouted Robots</h2>
+            <div class="row text-white rounded">
+                <div class="col-sm bg-danger border border-dark rounded">
+                {{with .Red1}}
+                    <h2>Red 1 - {{.Team}}</h2>
+                {{with .PowerUp}}
+                    <h3>Autonomous</h3>
+                {{with .Autonomous}}
+                    <table class="table table-sm table-striped table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Switch</th>
+                            <td>{{.SwitchAttempted}}</td>
+                            <td>{{.SwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
 
-    <div class="col-lg">
-        <h1>Left</h1>
-        <div class="row">
-            <div class="col-sm">
-            {{with .Red1}}
-                <h1>Red 1</h1>
-                <h4>{{.Team}}</h4>
-            {{end}}
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .TeleOperated}}
+                    <h3>Tele-Operated</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Own Switch</th>
+                            <td>{{.OwnSwitchAttempted}}</td>
+                            <td>{{.OwnSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Opponent Switch</th>
+                            <td>{{.OppSwitchAttempted}}</td>
+                            <td>{{.OppSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .Endgame}}
+                    <h3>Endgame</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Climb Setup Time</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Lifted Self</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Partners Lifted</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Parked</th>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{end}}
+                {{end}}
+                </div>
+                <div class="col-sm bg-danger border border-dark rounded">
+                {{with .Red2}}
+                    <h2>Red 2 - {{.Team}}</h2>
+                {{with .PowerUp}}
+                    <h3>Autonomous</h3>
+                {{with .Autonomous}}
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Switch</th>
+                            <td>{{.SwitchAttempted}}</td>
+                            <td>{{.SwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .TeleOperated}}
+                    <h3>Tele-Operated</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Own Switch</th>
+                            <td>{{.OwnSwitchAttempted}}</td>
+                            <td>{{.OwnSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Opponent Switch</th>
+                            <td>{{.OppSwitchAttempted}}</td>
+                            <td>{{.OppSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .Endgame}}
+                    <h3>Endgame</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Climb Setup Time</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Lifted Self</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Partners Lifted</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Parked</th>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{end}}
+                {{end}}
+                </div>
+                <div class="col-sm bg-danger border border-dark rounded">
+                {{with .Red3}}
+                    <h2>Red 3 - {{.Team}}</h2>
+                {{with .PowerUp}}
+                    <h3>Autonomous</h3>
+                {{with .Autonomous}}
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Switch</th>
+                            <td>{{.SwitchAttempted}}</td>
+                            <td>{{.SwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .TeleOperated}}
+                    <h3>Tele-Operated</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Own Switch</th>
+                            <td>{{.OwnSwitchAttempted}}</td>
+                            <td>{{.OwnSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Opponent Switch</th>
+                            <td>{{.OppSwitchAttempted}}</td>
+                            <td>{{.OppSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .Endgame}}
+                    <h3>Endgame</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Climb Setup Time</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Lifted Self</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Partners Lifted</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Parked</th>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{end}}
+                {{end}}
+                </div>
             </div>
-            <div class="col-sm">
-            {{with .Red2}}
-                <h1>Red 2</h1>
-                <h4>{{.Team}}</h4>
-            {{end}}
-            </div>
-            <div class="col-sm">
-            {{with .Red3}}
-                <h1>Red 3</h1>
-                <h4>{{.Team}}</h4>
-            {{end}}
+            <br>
+            <div class="row text-white rounded">
+                <div class="col-sm bg-primary border border-dark rounded">
+                {{with .Blue1}}
+                    <h2>Blue 1 - {{.Team}}</h2>
+                {{with .PowerUp}}
+                    <h3>Autonomous</h3>
+                {{with .Autonomous}}
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Switch</th>
+                            <td>{{.SwitchAttempted}}</td>
+                            <td>{{.SwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .TeleOperated}}
+                    <h3>Tele-Operated</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Own Switch</th>
+                            <td>{{.OwnSwitchAttempted}}</td>
+                            <td>{{.OwnSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Opponent Switch</th>
+                            <td>{{.OppSwitchAttempted}}</td>
+                            <td>{{.OppSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .Endgame}}
+                    <h3>Endgame</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Climb Setup Time</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Lifted Self</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Partners Lifted</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Parked</th>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{end}}
+                {{end}}
+                </div>
+                <div class="col-sm bg-primary border border-dark rounded">
+                {{with .Blue2}}
+                    <h2>Blue 2 - {{.Team}}</h2>
+                {{with .PowerUp}}
+                    <h3>Autonomous</h3>
+                {{with .Autonomous}}
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Switch</th>
+                            <td>{{.SwitchAttempted}}</td>
+                            <td>{{.SwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .TeleOperated}}
+                    <h3>Tele-Operated</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Own Switch</th>
+                            <td>{{.OwnSwitchAttempted}}</td>
+                            <td>{{.OwnSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Opponent Switch</th>
+                            <td>{{.OppSwitchAttempted}}</td>
+                            <td>{{.OppSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .Endgame}}
+                    <h3>Endgame</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Climb Setup Time</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Lifted Self</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Partners Lifted</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Parked</th>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{end}}
+                {{end}}
+                </div>
+                <div class="col-sm bg-primary border border-dark rounded">
+                {{with .Blue3}}
+                    <h2>Blue 3 - {{.Team}}</h2>
+                {{with .PowerUp}}
+                    <h3>Autonomous</h3>
+                {{with .Autonomous}}
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Switch</th>
+                            <td>{{.SwitchAttempted}}</td>
+                            <td>{{.SwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .TeleOperated}}
+                    <h3>Tele-Operated</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Own Switch</th>
+                            <td>{{.OwnSwitchAttempted}}</td>
+                            <td>{{.OwnSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Opponent Switch</th>
+                            <td>{{.OppSwitchAttempted}}</td>
+                            <td>{{.OppSwitchScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Scale</th>
+                            <td>{{.ScaleAttempted}}</td>
+                            <td>{{.ScaleScored}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Exchange</th>
+                            <td>{{.ExchangeAttempted}}</td>
+                            <td>{{.ExchangeScored}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{with .Endgame}}
+                    <h3>Endgame</h3>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Attempted</th>
+                            <th scope="col">Scored</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Climb Setup Time</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Lifted Self</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Partners Lifted</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">Parked</th>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                {{end}}
+                {{end}}
+                {{end}}
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm">
-            {{with .Blue1}}
-                <h1>Blue 1</h1>
-                <h4>{{.Team}}</h4>
-            {{end}}
-            </div>
-            <div class="col-sm">
-            {{with .Blue2}}
-                <h1>Blue 2</h1>
-                <h4>{{.Team}}</h4>
-            {{end}}
-            </div>
-            <div class="col-sm">
-            {{with .Blue3}}
-                <h1>Blue 3</h1>
-                <h4>{{.Team}}</h4>
-            {{end}}
-            </div>
-        </div>
-        <div class="col-lg" style="height:100%; display: block;">
-            <h1>Right</h1>
+        <div class="col-lg-3" style="height:100%; display: block;">
+            <h2>FRC Events</h2>
             <iframe src="https://frc-events.firstinspires.org/2018/ONWAT/qualifications/1" scrolling="no"
                     frameborder="0"
                     style="position: relative; height: 1840px; width: 100%;"></iframe>

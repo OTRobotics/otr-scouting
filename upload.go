@@ -31,7 +31,7 @@ type MatchUpload struct {
 func (m *MatchUpload) toMatchTemplate() MatchTemplate {
 	var mt = MatchTemplate{}
 
-	mt.MatchId = strconv.Itoa(m.Year) + "_" + m.EventId + "_" + m.MatchId
+	mt.MatchId = strconv.Itoa(m.Year) + "_" + m.EventId + "_" + string(m.Level[0]) + m.MatchId
 	mt.MatchNumber = m.MatchId
 	mt.Blue1 = m.MatchData.Blue1
 	mt.Blue2 = m.MatchData.Blue2

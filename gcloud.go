@@ -236,5 +236,9 @@ func getMatch(c *gin.Context, matchCode string) MatchTemplate {
 	}
 
 	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
-	return matches[0].toMatchTemplate()
+	if len(matches) == 0 {
+		return MatchTemplate{}
+	} else {
+		return matches[0].toMatchTemplate()
+	}
 }

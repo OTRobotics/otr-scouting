@@ -33,7 +33,7 @@ func (m MatchTemplate) Level() string {
 	if strings.Split(m.MatchId, "_")[2][0] == 'q' {
 		return "Qualification"
 	}
-	return "Elimination"
+	return "Playoffs"
 }
 
 func (m MatchTemplate) FriendlyName() string {
@@ -47,10 +47,6 @@ func (m MatchTemplate) EventId() string {
 func (m MatchTemplate) Year() int {
 	year, _ := strconv.Atoi(strings.Split(m.MatchId, "_")[0])
 	return year
-}
-
-type RobotTemplate struct {
-	Team int `json:"team"`
 }
 
 // Format: /event/:event

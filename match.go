@@ -7,6 +7,12 @@ import (
 	"strings"
 )
 
+// Changes per year, will need to be updated
+type RobotTemplate struct {
+	Team    int `json:"team"`
+	PowerUp PowerUpRobot
+}
+
 // FORMAT: /match/:matchnumber
 func GinMatchHandler(c *gin.Context) {
 	name := c.Param("matchnumber")
