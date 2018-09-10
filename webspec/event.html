@@ -21,9 +21,10 @@
 <body>
 
 <!-- Navigation -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="https://storage.googleapis.com/staging.otr-scouting.appspot.com/web/css/OTWhite@4x.png"
                  height="40" alt="">
         </a>
@@ -80,8 +81,6 @@
     {{range .ElimMatches}}
         <li class="list-group-item list-group-item-action"><a href="/match/{{.MatchId}}">Elimination
             - {{.MatchNumber}}
-            <span class="badge badge-danger badge-pill">{{.RedScore}}</span>
-            <span class="badge badge-primary badge-pill">{{.BlueScore}}</span>
         </a>
         </li>
     {{end}}

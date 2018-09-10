@@ -2,6 +2,8 @@ package otrscouting
 
 import (
 	"github.com/gin-gonic/gin"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/log"
 	"strconv"
 	"strings"
 )
@@ -24,20 +26,20 @@ type MatchTemplate struct {
 	Blue1       RobotTemplate
 	Blue2       RobotTemplate
 	Blue3       RobotTemplate
-	RedScore    int
-	BlueScore   int
+	redScore    int // Unused ATM
+	blueScore   int // Unused ATM
 	MatchId     string
 }
 
 func (m MatchTemplate) Level() string {
 	if strings.Split(m.MatchId, "_")[2][0] == 'q' {
-		return "Qualification"
+		return "Qualifications"
 	}
 	return "Playoffs"
 }
 
 func (m MatchTemplate) FriendlyName() string {
-	return m.Level() + " " + m.MatchNumber
+	return m.Level() + ": Match " + m.MatchNumber
 }
 
 func (m MatchTemplate) EventId() string {
