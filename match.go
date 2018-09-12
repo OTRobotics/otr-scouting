@@ -9,8 +9,9 @@ import (
 
 // Changes per year, will need to be updated
 type RobotTemplate struct {
-	Team    int `json:"team"`
-	PowerUp PowerUpRobot `json:"robot"`
+	Team     int          `json:"team"`
+	PowerUp  PowerUpRobot `json:"robot"`
+	MatchRef string       `json:"match_ref"`
 }
 
 // FORMAT: /match/:matchnumber

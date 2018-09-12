@@ -2,8 +2,6 @@ package otrscouting
 
 import (
 	"github.com/gin-gonic/gin"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/log"
 	"strconv"
 	"strings"
 )

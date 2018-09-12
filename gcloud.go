@@ -79,7 +79,36 @@ func uploadMatchToDatastore(c *gin.Context, matches []MatchUpload) {
 			fmt.Fprintf(c.Writer, "Failed to save match: %v", err)
 		}
 
-		fmt.Fprintf(c.Writer, "Saved %v: %v\n", taskKey, name)
+		fmt.Fprintf(c.Writer, "Saved %v: %v<br>", taskKey, name)
+
+		var robots []RobotTemplate
+		robots = append(robots, match.MatchData.Red1)
+		robots = append(robots, match.MatchData.Red2)
+		robots = append(robots, match.MatchData.Red3)
+		robots = append(robots, match.MatchData.Blue1)
+		robots = append(robots, match.MatchData.Blue2)
+		robots = append(robots, match.MatchData.Blue3)
+
+		uploadRobotToDatastore(c, robots, name)
+	}
+}
+
+func uploadRobotToDatastore(c *gin.Context, robots []RobotTemplate, matchcode string) {
+	client := datastoreClient(c)
+	// Set type
+	kind := "robot"
+	for _, robot := range robots {
+		// Fully qualified match/team - {year}_{event}_{matchid}_{team}
+		name := matchcode + "_" + strconv.Itoa(robot.Team)
+		// Creates a Key instance.
+		taskKey := datastore.NameKey(kind, name, nil)
+
+		// Saves the new entity.
+		if _, err := client.Put(c, taskKey, &robot); err != nil {
+			fmt.Fprintf(c.Writer, "Failed to save robot: %v", err)
+		}
+
+		fmt.Fprintf(c.Writer, "Saved %v: %v<br>", taskKey, name)
 	}
 }
 
@@ -241,4 +270,8 @@ func getMatch(c *gin.Context, matchCode string) MatchTemplate {
 	} else {
 		return matches[0].toMatchTemplate()
 	}
+}
+
+func sumPowerUpRobots(c *gin.Context, eventCode string) {
+
 }
