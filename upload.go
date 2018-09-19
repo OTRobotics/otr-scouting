@@ -44,6 +44,10 @@ func (m *MatchUpload) toMatchTemplate() MatchTemplate {
 	return mt
 }
 
+func (m MatchUpload) MatchCode() string {
+	return strconv.Itoa(m.Year) + "_" + m.EventId + "_" + m.MatchId
+}
+
 func GinUploadHandler(c *gin.Context) {
 	tmpl := GetPageTemplate("upload.html", c)
 	data := UploadData{
