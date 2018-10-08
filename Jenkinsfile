@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Compile Match Uploader') {
             steps {
-                echo 'MatchUploader Build for All OS's
+                echo 'MatchUploader Build for All OS\'s'
                 sh 'cd matchUploader && export GOOS=windows && go build main.go'
                 sh 'cd matchUploader && export GOOS=darwin && go build main.go'
                 sh 'cd matchUploader && export GOOS=linux && go build main.go'
@@ -12,9 +12,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing to be written later.'
-            }
-        }
+
+        }  echo 'Testing to be written later.'
+                     }
         stage('Deploy') {
             environment {
                 GCP_APPENGINE = credentials('otr-scouting-appengine')
