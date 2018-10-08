@@ -10,11 +10,6 @@ pipeline {
                 sh 'cd matchUploader && export GOOS=linux && go build main.go'
             }
         }
-        stage('Test') {
-            steps {
-
-        }  echo 'Testing to be written later.'
-                     }
         stage('Deploy') {
             environment {
                 GCP_APPENGINE = credentials('otr-scouting-appengine')
