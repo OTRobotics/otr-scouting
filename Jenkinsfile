@@ -2,6 +2,15 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Compile Match Uploader') {
+            steps {
+                echo 'MatchUploader Build for All OSs'
+                sh 'echo "cd matchUploader && export GOOS=windows && go build main.go" | bash'
+                sh 'cd matchUploader && export GOOS=darwin && go build main.go'
+                sh 'cd matchUploader && export GOOS=linux && go build main.go'
+            }
+        }
         stage('Compile Match Uploader') {
             steps {
                 echo 'MatchUploader Build for All OSs'
