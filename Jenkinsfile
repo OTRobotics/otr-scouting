@@ -18,7 +18,7 @@ node {
             withCredentials([file(credentialsId: 'otr-scouting-appengine', variable: 'GCP_CREDS')]) {
                 echo 'Deploying to GCP'
                 sh "/var/jenkins_home/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file $GCP_CREDS"
-                sh 'cd appengine && /var/jenkins_home/google-cloud-sdk/bin/gcloud app deploy'
+                sh 'cd appengine && /var/jenkins_home/google-cloud-sdk/bin/gcloud app deploy --quiet'
             }
         }
         stage('Archive Match Uploader') {
