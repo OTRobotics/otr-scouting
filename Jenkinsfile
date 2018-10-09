@@ -2,16 +2,12 @@ pipeline {
     agent any
 
     stages {
-     
         stage('Compile Match Uploader') {
             steps {
-                sh 'export GOROOT=/usr/loca/go'
-                sh 'export GOHOME=/var/jenkins_home/go'
-                sh 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH'
                 echo 'MatchUploader Build for All OSs'
-                sh 'cd matchUploader && export GOOS=windows && go build main.go'
-                sh 'cd matchUploader && export GOOS=darwin && go build main.go'
-                sh 'cd matchUploader && export GOOS=linux && go build main.go'
+                sh 'export GOROOT=/usr/local/go && export GOHOME=/var/jenkins_home/go && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH && cd matchUploader && export GOOS=windows && go build main.go'
+                sh 'export GOROOT=/usr/local/go && export GOHOME=/var/jenkins_home/go && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH && cd matchUploader && export GOOS=darwin && go build main.go'
+                sh 'export GOROOT=/usr/local/go && export GOHOME=/var/jenkins_home/go && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH && cd matchUploader && export GOOS=linux && go build main.go'
             }
         }
         stage('Deploy') {
@@ -21,7 +17,7 @@ pipeline {
             steps {
                 echo 'Deploying to GCP'
                 sh "/var/jenkins_home/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${env.GCP_APPENGINE}"
-                sh 'cd appengine && gcloud app deploy'
+                sh 'export GOROOT=/usr/local/go && export GOHOME=/var/jenkins_home/go && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH && cd appengine && gcloud app deploy'
             }
         }
         stage('Upload MatchUploader to GCS') {
