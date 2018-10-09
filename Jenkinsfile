@@ -5,7 +5,7 @@ pipeline {
         stage('Compile Match Uploader') {
             steps {
                 echo 'MatchUploader Build for All OSs'
-                sh 'export GOROOT=/usr/local/go && export GOHOME=/var/jenkins_home/go && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH && cd matchUploader && export GOOS=windows && go build main.go'
+                sh 'cd matchUploader && export GOOS=windows && go build main.go'
                 sh 'export GOROOT=/usr/local/go && export GOHOME=/var/jenkins_home/go && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH && cd matchUploader && export GOOS=darwin && go build main.go'
                 sh 'export GOROOT=/usr/local/go && export GOHOME=/var/jenkins_home/go && export PATH=$GOPATH/bin:$GOROOT/bin:$PATH && cd matchUploader && export GOOS=linux && go build main.go'
             }
