@@ -145,10 +145,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Jenkinsfile" value="770" />
+          <entry key="Jenkinsfile" value="859" />
           <entry key="go" value="5070" />
           <entry key="html" value="1310" />
-          <entry key="txt" value="113" />
+          <entry key="txt" value="185" />
           <entry key="yaml" value="109" />
         </counts>
       </usages-collector>
@@ -156,7 +156,7 @@
         <counts>
           <entry key="Go" value="5070" />
           <entry key="HTML" value="1310" />
-          <entry key="PLAIN_TEXT" value="883" />
+          <entry key="PLAIN_TEXT" value="1044" />
           <entry key="YAML" value="109" />
         </counts>
       </usages-collector>
@@ -225,8 +225,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Jenkinsfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+            <state relative-caret-position="204">
+              <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -467,7 +467,10 @@
     <MESSAGE value="Remove tests" />
     <MESSAGE value="Test via bash" />
     <MESSAGE value="Golang init." />
-    <option name="LAST_COMMIT_MESSAGE" value="Golang init." />
+    <MESSAGE value="Local to build" />
+    <MESSAGE value="Stupid bash env has nothing set." />
+    <MESSAGE value="Test if local or export" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test if local or export" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/events.go" />
@@ -576,8 +579,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Jenkinsfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        <state relative-caret-position="204">
+          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
         </state>
       </provider>
     </entry>
