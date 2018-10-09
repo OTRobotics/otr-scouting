@@ -1,5 +1,5 @@
 node {
-    withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}", "GOROOT=/usr/local/go"]) {
+    withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}", "GOROOT=/usr/local/go", "CLOUDSDK_CORE_PROJECT=otr-scouting"]) {
         env.PATH="${GOPATH}/bin:${GOROOT}/bin:$PATH"
         stage('Pre Test'){
             echo 'Pulling Dependencies'
