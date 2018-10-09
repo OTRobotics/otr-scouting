@@ -1,5 +1,4 @@
-pipeline {
-    agent any
+node {
     withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}, GOROOT=/usr/local/go"]) {
         env.PATH="${GOPATH}/bin:${GOROOT}/bin:$PATH"
         stages {
