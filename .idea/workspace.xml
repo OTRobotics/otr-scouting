@@ -133,22 +133,22 @@
     <session id="-1447842316">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.63" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Jenkinsfile" value="583" />
+          <entry key="Jenkinsfile" value="767" />
           <entry key="go" value="5070" />
           <entry key="html" value="1310" />
-          <entry key="txt" value="88" />
+          <entry key="txt" value="101" />
           <entry key="yaml" value="109" />
         </counts>
       </usages-collector>
@@ -156,7 +156,7 @@
         <counts>
           <entry key="Go" value="5070" />
           <entry key="HTML" value="1310" />
-          <entry key="PLAIN_TEXT" value="671" />
+          <entry key="PLAIN_TEXT" value="868" />
           <entry key="YAML" value="109" />
         </counts>
       </usages-collector>
@@ -213,8 +213,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matchUploader/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="112" column="34" lean-forward="true" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
+            <state relative-caret-position="1751">
+              <caret line="112" column="34" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
               <folding>
                 <element signature="e#14#142#0" expanded="true" />
               </folding>
@@ -225,8 +225,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Jenkinsfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="80" lean-forward="true" selection-start-line="16" selection-start-column="80" selection-end-line="16" selection-end-column="80" />
+            <state relative-caret-position="153">
+              <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -356,6 +356,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -382,7 +383,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,7 +425,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3304904" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33422175" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -465,7 +465,8 @@
     <MESSAGE value="Escape" />
     <MESSAGE value="Extra" />
     <MESSAGE value="Remove tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove tests" />
+    <MESSAGE value="Test via bash" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test via bash" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/events.go" />
@@ -527,6 +528,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/matchUploader/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1751">
+          <caret line="112" column="34" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
+          <folding>
+            <element signature="e#14#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/game-specific.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -562,20 +573,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matchUploader/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="112" column="34" lean-forward="true" selection-start-line="112" selection-start-column="34" selection-end-line="112" selection-end-column="34" />
-          <folding>
-            <element signature="e#14#142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Jenkinsfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="80" lean-forward="true" selection-start-line="16" selection-start-column="80" selection-end-line="16" selection-end-column="80" />
+        <state relative-caret-position="153">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
