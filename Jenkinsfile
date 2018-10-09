@@ -21,5 +21,8 @@ node {
                 sh 'cd appengine && /var/jenkins_home/google-cloud-sdk/bin/gcloud app deploy'
             }
         }
+        stage('Archive Match Uploader') {
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'matchUploader/main*', excludes: 'matchUploader/main.go'
+        }
     }
 }
