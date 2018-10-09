@@ -1,7 +1,6 @@
 node {
     withEnv(["GOPATH=${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}", "GOROOT=/usr/local/go"]) {
         env.PATH="${GOPATH}/bin:${GOROOT}/bin:$PATH"
-        stages {
             stage('Pre Test'){
                 echo 'Pulling Dependencies'
                 sh 'go version'
@@ -35,6 +34,5 @@ node {
                     sh '/var/jenkins_home/google-cloud-sdk/bin/gsutil cp *.pdf gs://staging.otr-scouting.appspot.com/matchUploader/'
                 }
             }
-        }
     }
 }
