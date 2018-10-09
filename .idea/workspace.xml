@@ -145,10 +145,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Jenkinsfile" value="767" />
+          <entry key="Jenkinsfile" value="770" />
           <entry key="go" value="5070" />
           <entry key="html" value="1310" />
-          <entry key="txt" value="101" />
+          <entry key="txt" value="113" />
           <entry key="yaml" value="109" />
         </counts>
       </usages-collector>
@@ -156,7 +156,7 @@
         <counts>
           <entry key="Go" value="5070" />
           <entry key="HTML" value="1310" />
-          <entry key="PLAIN_TEXT" value="868" />
+          <entry key="PLAIN_TEXT" value="883" />
           <entry key="YAML" value="109" />
         </counts>
       </usages-collector>
@@ -225,8 +225,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Jenkinsfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="68">
+              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -466,7 +466,8 @@
     <MESSAGE value="Extra" />
     <MESSAGE value="Remove tests" />
     <MESSAGE value="Test via bash" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test via bash" />
+    <MESSAGE value="Golang init." />
+    <option name="LAST_COMMIT_MESSAGE" value="Golang init." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/events.go" />
@@ -575,8 +576,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Jenkinsfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="68">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
         </state>
       </provider>
     </entry>

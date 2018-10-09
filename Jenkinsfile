@@ -2,15 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Prep Golang Environment') {
+     
+        stage('Compile Match Uploader') {
             steps {
                 sh 'export GOROOT=/usr/loca/go'
                 sh 'export GOHOME=/var/jenkins_home/go'
                 sh 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH'
-            }
-        }
-        stage('Compile Match Uploader') {
-            steps {
                 echo 'MatchUploader Build for All OSs'
                 sh 'cd matchUploader && export GOOS=windows && go build main.go'
                 sh 'cd matchUploader && export GOOS=darwin && go build main.go'
