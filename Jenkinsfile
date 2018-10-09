@@ -14,7 +14,7 @@ node {
             sh 'cd matchUploader && export GOOS=linux && go build main.go'
         }
         stage('Deploy') {
-            withCredentials([file(credentialsId: 'otr-scouting-appengined', variable: 'GCP_CREDS')]) {
+            withCredentials([file(credentialsId: 'otr-scouting-appengine', variable: 'GCP_CREDS')]) {
                 echo 'Deploying to GCP'
                 sh "/var/jenkins_home/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file $GCP_CREDS"
                 sh 'cd appengine && /var/jenkins_home/google-cloud-sdk/bin/gcloud app deploy'
