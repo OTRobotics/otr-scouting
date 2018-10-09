@@ -4,7 +4,7 @@ node {
         stage('Pre Test'){
             echo 'Pulling Dependencies'
             sh 'go version'
-            sh 'go get -u .'
+            sh 'go get .'
             sh 'go get -u github.com/otrobotics/otr-scouting'
         }
 
