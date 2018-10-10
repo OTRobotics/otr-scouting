@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ad263ba-bb9d-4dce-a912-a8953087469e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/.idea/libraries/GOPATH__otr_scouting_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/css/OTRlogo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/css/logo-nav.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/event.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/match.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/otr-scouting.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/upload.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/jquery/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/jquery/jquery.min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/jquery/jquery.slim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/jquery/jquery.slim.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webspec/vendor/jquery/jquery.slim.min.map" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,22 +167,23 @@
     <session id="-1447842316">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.63" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.66" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Jenkinsfile" value="1263" />
+          <entry key="Jenkinsfile" value="1271" />
           <entry key="go" value="5070" />
           <entry key="html" value="1310" />
-          <entry key="txt" value="282" />
+          <entry key="txt" value="319" />
           <entry key="yaml" value="109" />
         </counts>
       </usages-collector>
@@ -155,7 +191,7 @@
         <counts>
           <entry key="Go" value="5070" />
           <entry key="HTML" value="1310" />
-          <entry key="PLAIN_TEXT" value="1545" />
+          <entry key="PLAIN_TEXT" value="1590" />
           <entry key="YAML" value="109" />
         </counts>
       </usages-collector>
@@ -183,33 +219,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webspec/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="61" column="6" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webspec/event.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webspec/match.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11611">
-              <caret line="683" selection-start-line="683" selection-end-line="683" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/matchUploader/main.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1751">
@@ -224,8 +233,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Jenkinsfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="357">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -244,15 +253,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3723">
               <caret line="233" column="68" selection-start-line="233" selection-start-column="68" selection-end-line="233" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webspec/upload.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -342,7 +342,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-229" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1920" />
     <option name="height" value="1040" />
@@ -424,7 +424,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33422175" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3379531" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -436,7 +436,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49811035" visible="true" weight="0.17334779" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49811035" visible="true" weight="0.17334779" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50188965" side_tool="true" weight="0.32891247" />
       <window_info anchor="bottom" id="CSS Styles" order="11" weight="0.32891247" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -453,7 +453,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="restructure" />
     <MESSAGE value="Imports" />
     <MESSAGE value="Re-Restructure for GCloud" />
     <MESSAGE value="Update/New API Page" />
@@ -477,7 +476,9 @@
     <MESSAGE value="Typo" />
     <MESSAGE value="Get local" />
     <MESSAGE value="SDK env" />
-    <option name="LAST_COMMIT_MESSAGE" value="SDK env" />
+    <MESSAGE value="Match Uploader Archive" />
+    <MESSAGE value="Shhh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shhh" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/events.go" />
@@ -586,8 +587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Jenkinsfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="306">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
         </state>
       </provider>
     </entry>
