@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/otrobotics/otr-scouting"
+	"google.golang.org/appengine"
 	"net/http"
 )
 
@@ -30,6 +31,7 @@ func main() {
 	router.GET("/event/:event", otrscouting.GinEventHandler)
 
 	http.Handle("/", router)
+	appengine.Main()
 }
 
 func GinHomeHandler(c *gin.Context) {
