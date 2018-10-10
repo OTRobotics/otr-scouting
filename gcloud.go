@@ -129,6 +129,7 @@ func getEvent(c *gin.Context, event string) EventTemplate {
 
 	eTemp.QualMatches = getEventQualMatches(c, event)
 	eTemp.ElimMatches = getEventElimMatches(c, event)
+	//eTemp.TeamTable = sumEventRobots_PowerUp(c, getEventRobots(c, event))
 
 	return eTemp
 }
@@ -272,6 +273,41 @@ func getMatch(c *gin.Context, matchCode string) MatchTemplate {
 	}
 }
 
-func sumPowerUpRobots(c *gin.Context, eventCode string) {
+func getEventRobots(c *gin.Context, eventCode string) []RobotTemplate {
+	lastChar := eventCode[len(eventCode)-1]
+	codeP1 := eventCode[:len(eventCode)-1] + string(rune(lastChar+1))
+	ctx := context.Background()
+	robots := make([]RobotTemplate, 0)
+	q := datastore.NewQuery("robot").
+		Filter("MatchRef >=", eventCode).
+		Filter("MatchRef <=", codeP1)
+	client := datastoreClient(c)
+	keys, err := client.GetAll(ctx, q, &robots)
 
+	if err != nil {
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list: %v", err)
+	}
+
+	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
+	return robots
+}
+
+func sumEventRobots_PowerUp(c *gin.Context, robots []RobotTemplate) []PowerUpRobot {
+	var summed []PowerUpRobot
+	var teamMap = make(map[int]PowerUpRobot)
+
+	for _, robot := range robots {
+		var puRobot = teamMap[robot.Team]
+
+		puRobot.TeamNumber = robot.Team
+		puRobot.Add(robot.PowerUp)
+
+		teamMap[robot.Team] = puRobot
+	}
+
+	for _, robot := range teamMap {
+		summed = append(summed, robot)
+	}
+
+	return summed
 }
