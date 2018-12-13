@@ -1,5 +1,13 @@
 package otrscouting
 
+type RobotPerformance struct {
+	StoppedMoving bool `json:"stopped_moving"`
+	NeverMoved    bool `json:"never_moved"`
+	NoShow        bool `json:"no_show"`
+	Defense       int  `json:"defense"`
+}
+
+/* 2018 Game - PowerUp END */
 type PowerUpRobot struct {
 	TeamNumber   int              `json:"team_number"`
 	Autonomous   PowerUpAuton     `json:"autonomous"`
@@ -74,9 +82,26 @@ func (e *PowerUpEndgame) Add(endgame PowerUpEndgame) {
 	e.PartnersAttempted += endgame.PartnersAttempted
 }
 
-type RobotPerformance struct {
-	StoppedMoving bool `json:"stopped_moving"`
-	NeverMoved    bool `json:"never_moved"`
-	NoShow        bool `json:"no_show"`
-	Defense       int  `json:"defense"`
+/* 2018 Game - PowerUp END */
+
+/* 2019 Game - Destination: Deep Space */
+
+type DeepSpaceRobot struct {
+	TeamNumber   int              `json:"team_number"`
+	Autonomous   DeepSpaceAuton   `json:"autonomous"`
+	TeleOperated DeepSpaceTeleOp  `json:"tele_operated"`
+	Endgame      DeepSpaceEndgame `json:"endgame"`
+	OverallRobot RobotPerformance `json:"overall_robot"`
 }
+
+type DeepSpaceAuton struct {
+	Moved             bool `json:"moved"`
+}
+
+type DeepSpaceTeleOp struct {
+}
+
+type DeepSpaceEndgame struct {
+}
+
+/* 2019 Game - Destination: Deep Space END */

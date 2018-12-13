@@ -122,13 +122,12 @@ func getEvent(c *gin.Context, event string) EventTemplate {
 	keys, err := client.GetAll(ctx, q, &eTemp)
 
 	if err != nil {
-		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list books: %v", err)
+		log.Errorf(appengine.NewContext(c.Request), "datastoredb: could not list event: %v", err)
 	}
 
 	log.Debugf(appengine.NewContext(c.Request), "Found Keys: %s", keys)
 
 	eTemp.QualMatches = getEventQualMatches(c, event)
-	eTemp.ElimMatches = getEventElimMatches(c, event)
 	//eTemp.TeamTable = sumEventRobots_PowerUp(c, getEventRobots(c, event))
 
 	return eTemp
@@ -292,7 +291,7 @@ func getEventRobots(c *gin.Context, eventCode string) []RobotTemplate {
 	return robots
 }
 
-func sumEventRobots_PowerUp(c *gin.Context, robots []RobotTemplate) []PowerUpRobot {
+func sumeventrobotsPowerup(c *gin.Context, robots []RobotTemplate) []PowerUpRobot {
 	var summed []PowerUpRobot
 	var teamMap = make(map[int]PowerUpRobot)
 

@@ -21,14 +21,17 @@ func main() {
 	router.GET("/", GinHomeHandler)
 	router.GET("/upload", otrscouting.GinUploadHandler)
 	router.POST("/upload", otrscouting.GinUploadHandler)
+	router.GET("/upload/type", otrscouting.GinDataTypeHandler)
 
-	router.GET("/matches")
-	router.GET("/teams")
-	router.GET("/events")
+	router.GET("/matches", otrscouting.GinMatchesHandler)
+	router.GET("/teams", otrscouting.GinTeamsHandler)
+	router.GET("/events", otrscouting.GinEventsHandler)
 
 	router.GET("/match/:matchnumber", otrscouting.GinMatchHandler)
 	router.GET("/team/:teamnumber", otrscouting.GinTeamHandler)
 	router.GET("/event/:event", otrscouting.GinEventHandler)
+
+	router.POST("/slack/slash", otrscouting.GinSlackSlashHandler)
 
 	http.Handle("/", router)
 	appengine.Main()
@@ -36,8 +39,5 @@ func main() {
 
 func GinHomeHandler(c *gin.Context) {
 	tmpl := otrscouting.GetPageTemplate("index.html", c)
-	data := IndexPage{PageTitle: "OTR Scouting Application",
-		Events: otrscouting.GetYearEvents(2018, c),
-	}
-	tmpl.Execute(c.Writer, data)
+	tmpl.Execute(c.Writer, nil)
 }

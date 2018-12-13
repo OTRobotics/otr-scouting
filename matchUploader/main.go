@@ -155,7 +155,7 @@ func main() {
 	}
 	data, err := json.Marshal(uploads)
 
-	url := "http://otr-scouting.appspot.com/upload"
+	url := "https://otr-scouting.appspot.com/upload"
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(data))
 	req.PostForm.Add("json", string(data))
 	req.PostForm.Add("pass", "OTR3474")

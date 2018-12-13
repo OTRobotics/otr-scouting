@@ -13,7 +13,6 @@ type EventTemplate struct {
 	EventDate   string
 	Year        int
 	QualMatches []MatchTemplate
-	ElimMatches []MatchTemplate
 	TeamTable   []PowerUpRobot
 }
 
@@ -56,6 +55,6 @@ func GinEventHandler(c *gin.Context) {
 	tmpl := GetPageTemplate("event.html", c)
 	data := getEvent(c, eventCode)
 	data.QualMatches = getEventMatches(c, eventCode)
-	data.TeamTable = sumEventRobots_PowerUp(c, getEventRobots(c, eventCode))
+	data.TeamTable = sumeventrobotsPowerup(c, getEventRobots(c, eventCode))
 	tmpl.Execute(c.Writer, data)
 }

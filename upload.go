@@ -48,6 +48,11 @@ func (m MatchUpload) MatchCode() string {
 	return strconv.Itoa(m.Year) + "_" + m.EventId + "_" + m.MatchId
 }
 
+func GinDataTypeHandler(c *gin.Context) {
+	json := getMatch(c, "2018_onwat_q1")
+	c.JSON(200, json)
+}
+
 func GinUploadHandler(c *gin.Context) {
 	tmpl := GetPageTemplate("upload.html", c)
 	data := UploadData{
