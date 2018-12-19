@@ -6,6 +6,15 @@ import (
 	"strings"
 )
 
+type EventRoot struct {
+	EventCode string
+	EventDate string
+	EventId   string
+	EventName string
+	FRCEvents string
+	Year      int
+}
+
 type EventTemplate struct {
 	EventName   string
 	FRCEvents   string

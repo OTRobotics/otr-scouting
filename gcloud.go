@@ -310,3 +310,26 @@ func sumeventrobotsPowerup(c *gin.Context, robots []RobotTemplate) []PowerUpRobo
 
 	return summed
 }
+
+func adminCreateEvent(c *gin.Context, frccode string, year int) {
+	client := datastoreClient(c)
+	var eventdata EventRoot
+	// some call to get from frc events....
+
+	// Set type
+	kind := "event"
+
+	// Fully qualified match/team - {year}_{event}_{matchid}_{team}
+	name := strconv.Itoa(year) + "_" + frccode
+	// Creates a Key instance.
+	taskKey := datastore.NameKey(kind, name, nil)
+
+	// Saves the new entity.
+	if _, err := client.Put(c, taskKey, &eventdata); err != nil {
+		fmt.Fprintf(c.Writer, "Failed to save event: %v", err)
+		return
+	}
+
+	fmt.Fprintf(c.Writer, "Saved %v: %v<br>", taskKey, name)
+
+}

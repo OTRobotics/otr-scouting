@@ -37,6 +37,9 @@ func main() {
 	router.GET("/scout/:event", otrscouting.GinUserScoutingHandler)
 	router.POST("/scout/:event", otrscouting.GinUserScoutingHandler)
 
+	router.GET("/admin", otrscouting.GoAdminHandler)
+	router.POST("/admin", otrscouting.GoAdminHandler)
+
 	http.Handle("/", router)
 	appengine.Main()
 }
