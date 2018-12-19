@@ -22,6 +22,7 @@ func main() {
 	router.GET("/upload", otrscouting.GinUploadHandler)
 	router.POST("/upload", otrscouting.GinUploadHandler)
 	router.GET("/upload/type", otrscouting.GinDataTypeHandler)
+	router.GET("/upload/manual", otrscouting.GinManualUploadHandler)
 
 	router.GET("/matches", otrscouting.GinMatchesHandler)
 	router.GET("/teams", otrscouting.GinTeamsHandler)
@@ -33,11 +34,14 @@ func main() {
 
 	router.POST("/slack/slash", otrscouting.GinSlackSlashHandler)
 
+	router.GET("/scout/:event", otrscouting.GinUserScoutingHandler)
+	router.POST("/scout/:event", otrscouting.GinUserScoutingHandler)
+
 	http.Handle("/", router)
 	appengine.Main()
 }
 
 func GinHomeHandler(c *gin.Context) {
 	tmpl := otrscouting.GetPageTemplate("index.html", c)
-	tmpl.Execute(c.Writer, nil)
+	_ = tmpl.Execute(c.Writer, nil)
 }

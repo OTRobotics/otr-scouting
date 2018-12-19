@@ -83,3 +83,7 @@ func GinUploadHandler(c *gin.Context) {
 		uploadMatchToDatastore(c, matches)
 	}
 }
+
+func GinManualUploadHandler(c *gin.Context) {
+
+}
